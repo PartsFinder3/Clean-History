@@ -189,7 +189,7 @@
                         <th class="px-6 py-4">VIN</th>
                         <th class="px-6 py-4">Mileage</th>
                         <th class="px-6 py-4">Location</th>
-                        <th class="px-6 py-4">Added</th>
+                        <th class="px-6 py-4">Damage</th>
                         <th class="px-6 py-4 text-center">Actions</th>
                     </tr>
                 </thead>
@@ -214,7 +214,7 @@
                             <td class="px-6 py-4 font-mono text-cyan-400 text-xs">{{ $car->vin }}</td>
                             <td class="px-6 py-4 text-zinc-300 text-xs italic">{{ $car->mileage ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-zinc-400 text-xs">{{ $car->location ?? 'N/A' }}</td>
-                            <td class="px-6 py-4 text-zinc-500 text-xs">Verified</td>
+                            <td class="px-6 py-4 text-red-500/80 text-[10px] uppercase font-bold">{{ $car->damage ?? 'None' }}</td>
                             <td class="px-6 py-4 text-center">
                                 <form action="{{ route('admin.cars.destroy', $car->id) }}" method="POST" class="inline">
                                     @csrf
@@ -302,9 +302,9 @@
                         else if (lowCol === 'vin' || lowCol === 'vinnumber' || lowCol === 'vin#') car.vin = values[i];
                         else if (lowCol === 'description' || lowCol === 'desc' || lowCol === 'notes') car.description = values[i];
                         else if (['carimageurl', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'featureimage'].includes(lowCol)) car.car_image_url = values[i];
-                        else if (['mileage', 'miles', 'milesage', 'km', 'odometer', 'odo'].includes(lowCol)) car.mileage = values[i];
-                        else if (['location', 'city', 'loc', 'address', 'state'].includes(lowCol)) car.location = values[i];
-                        else if (['damage', 'status', 'condition', 'damaged', 'primarydamage', 'loss', 'losstype'].includes(lowCol)) car.damage = values[i];
+                        else if (['mileage', 'milage', 'miles', 'milesage', 'km', 'odometer', 'odo'].includes(lowCol)) car.mileage = values[i].replace(/^milage:\s*/i, '').replace(/^mileage:\s*/i, '');
+                        else if (['location', 'city', 'loc', 'address', 'state'].includes(lowCol)) car.location = values[i].replace(/^location:\s*/i, '');
+                        else if (['damage', 'demage', 'status', 'condition', 'damaged', 'primarydamage', 'loss', 'losstype'].includes(lowCol)) car.damage = values[i].replace(/^damage:\s*/i, '').replace(/^demage:\s*/i, '');
                     });
                     if (car.vin && car.car_name) cars.push(car);
                 });
@@ -335,14 +335,18 @@
                 return null;
             };
 
+            const rawMileage = findValue(['mileage', 'milage', 'miles', 'milesage', 'km', 'odometer', 'odo']);
+            const rawLocation = findValue(['location', 'city', 'loc', 'address', 'state', 'branch']);
+            const rawDamage = findValue(['damage', 'demage', 'status', 'condition', 'damaged', 'primary_damage', 'loss', 'loss_type']);
+
             return {
                 car_name: findValue(['car_name', 'carname', 'name', 'vehicle', 'title', 'vehicle_name']),
                 vin: findValue(['vin', 'vinnumber', 'vin#', 'serial_number']) ? findValue(['vin', 'vinnumber', 'vin#', 'serial_number']).toString().trim().toUpperCase() : null,
                 description: findValue(['description', 'desc', 'notes', 'comments']),
                 car_image_url: findValue(['car_image_url', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'feature_image', 'img']),
-                mileage: findValue(['mileage', 'miles', 'milesage', 'km', 'odometer', 'odo']),
-                location: findValue(['location', 'city', 'loc', 'address', 'state', 'branch']),
-                damage: findValue(['damage', 'status', 'condition', 'damaged', 'primary_damage', 'loss', 'loss_type'])
+                mileage: rawMileage ? rawMileage.toString().replace(/^milage:\s*/i, '').replace(/^mileage:\s*/i, '') : null,
+                location: rawLocation ? rawLocation.toString().replace(/^location:\s*/i, '') : null,
+                damage: rawDamage ? rawDamage.toString().replace(/^damage:\s*/i, '').replace(/^demage:\s*/i, '') : null
             };
         }).filter(c => c.vin && c.car_name);
         
