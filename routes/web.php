@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
+
+// SEO Routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -22,7 +22,7 @@
             @if($car->car_image_url)
                 <img 
                     src="{{ $car->car_image_url }}" 
-                    alt="{{ $car->car_name }}" 
+                    alt="VIN: {{ $car->vin }}" 
                     class="absolute inset-0 h-full w-full object-cover"
                     referrerpolicy="no-referrer"
                     loading="eager"

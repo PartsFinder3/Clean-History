@@ -4,8 +4,8 @@
             @if($car->car_image_url)
                 <img 
                     src="{{ $car->car_image_url }}" 
-                    alt="{{ $car->car_name }}" 
-                    class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                    alt="VIN: {{ $car->vin }}" 
+                    class="h-full w-full object-cover"
                     referrerpolicy="no-referrer"
                     onerror="this.src='https://via.placeholder.com/640x400?text=No+Image'"
                 >
