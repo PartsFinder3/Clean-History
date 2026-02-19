@@ -340,13 +340,14 @@
                     const values = group.substring(1, group.length - 1).match(/(?:'[^']*'|[^,])+/g).map(v => v.trim().replace(/^'|'$/g, ''));
                     const car = {};
                     columns.forEach((col, i) => {
-                        if (col === 'car_name') car.car_name = values[i];
-                        else if (col === 'vin') car.vin = values[i];
-                        else if (col === 'description') car.description = values[i];
-                        else if (col === 'car_image_url') car.car_image_url = values[i];
-                        else if (col === 'mileage') car.mileage = values[i];
-                        else if (col === 'location') car.location = values[i];
-                        else if (col === 'damage') car.damage = values[i];
+                        const lowCol = col.toLowerCase().replace(/[`"_\s]/g, '');
+                        if (lowCol === 'carname' || lowCol === 'name' || lowCol === 'title') car.car_name = values[i];
+                        else if (lowCol === 'vin' || lowCol === 'vinnumber') car.vin = values[i];
+                        else if (lowCol === 'description' || lowCol === 'desc') car.description = values[i];
+                        else if (['carimageurl', 'image', 'url', 'photo', 'images', 'pic', 'picture'].includes(lowCol)) car.car_image_url = values[i];
+                        else if (['mileage', 'miles', 'milesage', 'km'].includes(lowCol)) car.mileage = values[i];
+                        else if (['location', 'city', 'loc', 'address'].includes(lowCol)) car.location = values[i];
+                        else if (['damage', 'status', 'condition'].includes(lowCol)) car.damage = values[i];
                     });
                     if (car.vin && car.car_name) cars.push(car);
                 });
@@ -381,10 +382,10 @@
                 car_name: findValue(['car_name', 'carname', 'name', 'vehicle', 'title']),
                 vin: findValue(['vin', 'vinnumber', 'vin#']) ? findValue(['vin', 'vinnumber', 'vin#']).toString().trim().toUpperCase() : null,
                 description: findValue(['description', 'desc', 'notes']),
-                car_image_url: findValue(['car_image_url', 'image', 'url', 'photo']),
-                mileage: findValue(['mileage', 'miles', 'milesage']),
-                location: findValue(['location', 'city', 'loc']),
-                damage: findValue(['damage', 'status', 'condition'])
+                car_image_url: findValue(['car_image_url', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'feature_image']),
+                mileage: findValue(['mileage', 'miles', 'milesage', 'km']),
+                location: findValue(['location', 'city', 'loc', 'address']),
+                damage: findValue(['damage', 'status', 'condition', 'damaged'])
             };
         }).filter(c => c.vin && c.car_name);
         
