@@ -65,7 +65,7 @@
             </div>
             <div>
                 <p class="text-[9px] md:text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Update</p>
-                <p class="text-xl md:text-2xl font-bold text-white font-outfit">{{ $cars->first() ? $cars->first()->created_at->diffForHumans() : 'N/A' }}</p>
+                <p class="text-xl md:text-2xl font-bold text-white font-outfit">Live</p>
             </div>
         </div>
 
@@ -257,7 +257,7 @@
                             <td class="px-6 py-4 font-mono text-cyan-400 text-xs">{{ $car->vin }}</td>
                             <td class="px-6 py-4 text-zinc-300 text-xs italic">{{ $car->mileage ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-zinc-400 text-xs">{{ $car->location ?? 'N/A' }}</td>
-                            <td class="px-6 py-4 text-zinc-500 text-xs">{{ $car->created_at->format('M d, H:i') }}</td>
+                            <td class="px-6 py-4 text-zinc-500 text-xs">Verified</td>
                             <td class="px-6 py-4 text-center">
                                 <form action="{{ route('admin.cars.destroy', $car->id) }}" method="POST" class="inline">
                                     @csrf

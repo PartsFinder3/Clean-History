@@ -9,13 +9,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $featuredCars = Car::orderBy('created_at', 'desc')->take(6)->get();
+        $featuredCars = Car::orderBy('id', 'desc')->take(6)->get();
         return view('home', compact('featuredCars'));
     }
 
     public function cars(Request $request)
     {
-        $cars = Car::orderBy('created_at', 'desc')->paginate(24);
+        $cars = Car::orderBy('id', 'desc')->paginate(24);
         return view('cars.index', compact('cars'));
     }
 
