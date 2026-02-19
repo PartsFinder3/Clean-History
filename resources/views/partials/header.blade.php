@@ -7,6 +7,7 @@
         <nav class="hidden items-center gap-8 md:flex">
             <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">Home</a>
             <a href="{{ route('cars.index') }}" class="text-sm font-medium {{ request()->routeIs('cars.*') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">Cars</a>
+            <a href="{{ route('products') }}" class="text-sm font-medium {{ request()->routeIs('products') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">Services</a>
             <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">About</a>
             <a href="{{ route('contact') }}" class="text-sm font-medium {{ request()->routeIs('contact') ? 'text-cyan-400' : 'text-zinc-400' }} transition hover:text-cyan-400">Contact</a>
             
@@ -33,6 +34,7 @@
         <nav class="flex flex-col gap-1">
             <a href="{{ route('home') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Home</a>
             <a href="{{ route('cars.index') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Cars</a>
+            <a href="{{ route('products') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Services</a>
             <a href="{{ route('about') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">About</a>
             <a href="{{ route('contact') }}" class="rounded-lg px-4 py-3 text-base font-medium text-zinc-300 hover:bg-zinc-800/50 hover:text-cyan-400">Contact</a>
             @auth

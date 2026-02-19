@@ -14,6 +14,7 @@ Route::get('/cars', [HomeController::class, 'cars'])->name('cars.index');
 Route::get('/cars/{slug}', [HomeController::class, 'carDetail'])->name('cars.show');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/products', [HomeController::class, 'products'])->name('products');
 
 // Admin Auth Routes
 Route::get('/login', [AdminController::class, 'login'])->name('admin.login');

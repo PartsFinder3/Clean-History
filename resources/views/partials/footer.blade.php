@@ -13,6 +13,7 @@
             <nav class="flex flex-wrap gap-6">
                 <a href="{{ route('home') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Home</a>
                 <a href="{{ route('cars.index') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Cars</a>
+                <a href="{{ route('products') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Services</a>
                 <a href="{{ route('about') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">About</a>
                 <a href="{{ route('contact') }}" class="text-sm font-medium text-zinc-400 transition hover:text-cyan-400">Contact</a>
             </nav>
