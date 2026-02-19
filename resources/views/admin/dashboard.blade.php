@@ -129,58 +129,6 @@
             </div>
         </div>
 
-        <!-- Single Upload -->
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
-             <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-blue-500/10"></div>
-            <h2 class="text-xl font-bold text-white mb-6 font-outfit flex items-center gap-3">
-                <span class="p-2 bg-blue-500/10 rounded-lg text-blue-500">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </span>
-                Single Upload
-            </h2>
-
-            <form action="{{ route('admin.cars.store') }}" method="POST" class="space-y-4">
-                @csrf
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Car Name</label>
-                        <input type="text" name="car_name" placeholder="2024 Tesla Model 3" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" required />
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">VIN Number</label>
-                        <input type="text" name="vin" placeholder="VIN Number" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all uppercase" required />
-                    </div>
-                </div>
-                
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Full Image URL</label>
-                    <input type="text" name="car_image_url" placeholder="https://images.com/car.jpg" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Mileage</label>
-                        <input type="text" name="mileage" placeholder="e.g. 50k" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Location</label>
-                        <input type="text" name="location" placeholder="e.g. London" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Damage / Status</label>
-                        <input type="text" name="damage" placeholder="e.g. Front End" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all" />
-                    </div>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider ml-1">Description</label>
-                    <textarea name="description" rows="3" placeholder="Additional vehicle details..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"></textarea>
-                </div>
-                
-                <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-sm transition-all active:scale-[0.98] shadow-lg shadow-blue-600/20">
-                    Add Vehicle Record
-                </button>
-            </form>
         </div>
     </div>
 
@@ -350,13 +298,13 @@
                     const car = {};
                     columns.forEach((col, i) => {
                         const lowCol = col.toLowerCase().replace(/[`"_\s]/g, '');
-                        if (lowCol === 'carname' || lowCol === 'name' || lowCol === 'title') car.car_name = values[i];
-                        else if (lowCol === 'vin' || lowCol === 'vinnumber') car.vin = values[i];
-                        else if (lowCol === 'description' || lowCol === 'desc') car.description = values[i];
-                        else if (['carimageurl', 'image', 'url', 'photo', 'images', 'pic', 'picture'].includes(lowCol)) car.car_image_url = values[i];
-                        else if (['mileage', 'miles', 'milesage', 'km'].includes(lowCol)) car.mileage = values[i];
-                        else if (['location', 'city', 'loc', 'address'].includes(lowCol)) car.location = values[i];
-                        else if (['damage', 'status', 'condition'].includes(lowCol)) car.damage = values[i];
+                        if (lowCol === 'carname' || lowCol === 'name' || lowCol === 'title' || lowCol === 'vehiclename') car.car_name = values[i];
+                        else if (lowCol === 'vin' || lowCol === 'vinnumber' || lowCol === 'vin#') car.vin = values[i];
+                        else if (lowCol === 'description' || lowCol === 'desc' || lowCol === 'notes') car.description = values[i];
+                        else if (['carimageurl', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'featureimage'].includes(lowCol)) car.car_image_url = values[i];
+                        else if (['mileage', 'miles', 'milesage', 'km', 'odometer', 'odo'].includes(lowCol)) car.mileage = values[i];
+                        else if (['location', 'city', 'loc', 'address', 'state'].includes(lowCol)) car.location = values[i];
+                        else if (['damage', 'status', 'condition', 'damaged', 'primarydamage', 'loss', 'losstype'].includes(lowCol)) car.damage = values[i];
                     });
                     if (car.vin && car.car_name) cars.push(car);
                 });
@@ -388,13 +336,13 @@
             };
 
             return {
-                car_name: findValue(['car_name', 'carname', 'name', 'vehicle', 'title']),
-                vin: findValue(['vin', 'vinnumber', 'vin#']) ? findValue(['vin', 'vinnumber', 'vin#']).toString().trim().toUpperCase() : null,
-                description: findValue(['description', 'desc', 'notes']),
-                car_image_url: findValue(['car_image_url', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'feature_image']),
-                mileage: findValue(['mileage', 'miles', 'milesage', 'km']),
-                location: findValue(['location', 'city', 'loc', 'address']),
-                damage: findValue(['damage', 'status', 'condition', 'damaged'])
+                car_name: findValue(['car_name', 'carname', 'name', 'vehicle', 'title', 'vehicle_name']),
+                vin: findValue(['vin', 'vinnumber', 'vin#', 'serial_number']) ? findValue(['vin', 'vinnumber', 'vin#', 'serial_number']).toString().trim().toUpperCase() : null,
+                description: findValue(['description', 'desc', 'notes', 'comments']),
+                car_image_url: findValue(['car_image_url', 'image', 'url', 'photo', 'images', 'pic', 'picture', 'feature_image', 'img']),
+                mileage: findValue(['mileage', 'miles', 'milesage', 'km', 'odometer', 'odo']),
+                location: findValue(['location', 'city', 'loc', 'address', 'state', 'branch']),
+                damage: findValue(['damage', 'status', 'condition', 'damaged', 'primary_damage', 'loss', 'loss_type'])
             };
         }).filter(c => c.vin && c.car_name);
         
