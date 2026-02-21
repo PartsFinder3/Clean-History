@@ -8,6 +8,7 @@
     {{-- ===== SEO: Title & Description ===== --}}
     <title>@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')</title>
     <meta name="description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process. Trusted by dealers & car owners worldwide.')">
+    <meta name="google-site-verification" content="google8695422c1bbb2c54" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
     {{-- ===== SEO: Canonical URL ===== --}}
