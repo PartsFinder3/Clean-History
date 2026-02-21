@@ -7,7 +7,7 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Car History Clean",
     "url": "{{ route('contact') }}",
@@ -30,7 +30,7 @@
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {

@@ -20,19 +20,15 @@
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:site_name" content="Car History Clean">
     <meta property="og:locale" content="en_US">
-    @hasSection('og_image')
-        <meta property="og:image" content="@yield('og_image')">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-    @endif
+    <meta property="og:image" content="@yield('og_image')">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     
     {{-- ===== SEO: Twitter Card Meta Tags ===== --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', 'Car History Clean – Professional VIN History Check & Removal Services')">
     <meta name="twitter:description" content="@yield('description', 'Professional car history removal services. Clean title, verified VIN, transparent process.')">
-    @hasSection('og_image')
-        <meta name="twitter:image" content="@yield('og_image')">
-    @endif
+    <meta name="twitter:image" content="@yield('og_image')">
     
     {{-- ===== SEO: Favicon ===== --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -44,7 +40,7 @@
     {{-- ===== SEO: Organization Schema (Global – every page) ===== --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+        "@@context": "https://schema.org",
         "@type": "Organization",
         "name": "Car History Clean",
         "url": "{{ url('/') }}",

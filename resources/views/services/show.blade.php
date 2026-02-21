@@ -9,7 +9,7 @@
 {{-- Service Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "Service",
     "name": "{{ $product['name'] }} History Removal",
     "url": "{{ route('services.show', $product['slug']) }}",
@@ -49,7 +49,7 @@
 {{-- BreadcrumbList --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {
@@ -77,7 +77,7 @@
 {{-- FAQPage Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
         {

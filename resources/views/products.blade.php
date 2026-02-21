@@ -8,7 +8,7 @@
 {{-- ItemList Schema for Services Listing --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Car History Removal Services",
     "description": "Professional car history removal from major auction platforms",
@@ -46,7 +46,7 @@
 {{-- BreadcrumbList --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {

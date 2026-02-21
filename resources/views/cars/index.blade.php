@@ -8,7 +8,7 @@
 {{-- CollectionPage Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Browse Vehicles - Car History Clean",
     "url": "{{ route('cars.index') }}",
@@ -33,7 +33,7 @@
 {{-- BreadcrumbList --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {

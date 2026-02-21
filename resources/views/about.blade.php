@@ -7,7 +7,7 @@
 @section('schema')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Car History Clean",
     "url": "{{ route('about') }}",
@@ -25,7 +25,7 @@
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {

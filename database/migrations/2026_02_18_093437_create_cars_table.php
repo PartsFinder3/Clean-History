@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
-            $table->id();
-            $table->string('car_name');
-            $table->string('vin')->unique();
-            $table->text('description')->nullable();
-            $table->text('car_image_url')->nullable();
-            $table->string('mileage')->nullable();
-            $table->string('location')->nullable();
-            $table->string('damage')->nullable();
-            $table->string('slug')->unique();
-            $table->timestamps();
-            
-            $table->index('created_at');
-        });
+        if (!Schema::hasTable('cars')) {
+            Schema::create('cars', function (Blueprint $table) {
+                $table->id();
+                $table->string('car_name');
+                $table->string('vin')->unique();
+                $table->text('description')->nullable();
+                $table->text('car_image_url')->nullable();
+                $table->string('mileage')->nullable();
+                $table->string('location')->nullable();
+                $table->string('damage')->nullable();
+                $table->string('slug')->unique();
+                $table->timestamps();
+                
+                $table->index('created_at');
+            });
+        }
     }
 
     /**

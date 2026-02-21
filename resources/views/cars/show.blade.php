@@ -4,15 +4,13 @@
 @section('description', 'View the full vehicle history report for ' . $car->car_name . ' (VIN: ' . $car->vin . '). Check accidents, auction history, and clean title status online.')
 @section('canonical', route('cars.show', $car->slug))
 @section('og_type', 'product')
-@if($car->car_image_url)
-@section('og_image', $car->car_image_url)
-@endif
+@section('og_image', $car->car_image_url ?? '')
 
 @section('schema')
 {{-- Vehicle Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "Car",
     "name": "{{ $car->car_name }}",
     "url": "{{ route('cars.show', $car->slug) }}",
@@ -48,7 +46,7 @@
 {{-- BreadcrumbList --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
         {
@@ -76,7 +74,7 @@
 {{-- FAQPage Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
         {
